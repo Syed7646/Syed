@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global consulting</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- BoxIcons CDN-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css' rel='stylesheet'>
+
+    <!-- Slick Slider CDN -->
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar-nav .nav-link {
+            color: #000;
+        }
+
+        .dropend .dropdown-toggle {
+            color: salmon;
+            margin-left: 1em;
+        }
+
+        .dropdown-item:hover {
+            background-color: #00a54f;
+            color: #fff;
+        }
+
+        .bg-green {
+            background-color: #00a54f;
+        }
+
+        .text-green {
+            color: #00a54f;
+        }
+
+        .dropdown .dropdown-menu {
+            display: none;
+        }
+
+        .dropdown:hover>.dropdown-menu,
+        .dropend:hover>.dropdown-menu {
+            display: block;
+            margin-top: 0.125em;
+            margin-left: 0.125em;
+        }
+
+        @media screen and (min-width: 769px) {
+            .dropend:hover>.dropdown-menu {
+                position: absolute;
+                top: 0;
+                left: 100%;
+            }
+
+            .dropend .dropdown-toggle {
+                margin-left: 0.5em;
+            }
+        }
+
+        nav .nav-link {
+            font-size: 14spx;
+            font-weight: 500;
+            color: #4f5a62 !important;
+            padding: 2px 10px !important;
+        }
+
+        .navbar-nav .nav-link.active,
+        .navbar-nav .nav-link.show {
+            color: #175da2 !important;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.show {
+            color: #175da2 !important;
+        }
+
+        ul.dropdown-menu {
+            padding: 0;
+            background-color: #effbed;
+        }
+
+        ul.dropdown-menu li a {
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: none;
+            color: #2a2a2a;
+        }
+
+        .carousel-control-next-icon,
+        .carousel-control-prev-icon {
+            background-color: #175da2;
+            padding: 20px;
+        }
+
+        .ptb-50 {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        /* section-1-Start */
+        .bg-about {
+            background-image: url("/about_background.jpeg");
+            background-position: center center;
+        }
+
+        .content {
+            background-color: #fff;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        }
+
+        @media(max-width:575px) {
+            img.d-block {
+                height: 300px;
+                object-fit: cover;
+            }
+        }
+
+        .text-justify {
+            text-align: justify;
+        }
+
+        .box {
+            background-color: #fff;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 16px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        }
+
+        .box:hover {
+            background-color: #00a54f;
+            transition: 0.3s ease-in;
+            box-shadow: rgba(50, 50, 93, 0.25) inset -116px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        }
+
+        .box:hover h3 {
+            color: white;
+        }
+
+        .box:hover p {
+            color: white;
+        }
+
+        .box:hover li {
+            color: white;
+        }
+
+        .icon {
+            width: 70px;
+            height: 70px;
+            align-items: center;
+            margin: auto;
+            margin-bottom: 10px;
+            background: white;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+            border-radius: 1000px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .s-box {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+            padding: 23px;
+            transition: 0.4s ease-in-out;
+            border-radius: 5px;
+        }
+
+        .s-box:hover {
+            background-color: white;
+            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        }
+
+        .s-box:hover .icon {
+            transition: 0.4 ease;
+            box-shadow: rgb(0, 0, 0) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.712) 0px 0.125em 0.5em, rgba(0, 0, 0, 0) 0px 0px 0px 1px inset;
+        }
+
+        /* section-1-End */
+
+        /* section-2-Start */
+        .column {
+            float: left;
+            width: 33.33%;
+            display: none;
+            position: relative;
+            /* Hide all elements by default */
+        }
+
+        @media only screen and (max-width: 991px) and (min-width: 575px) {
+            .column {
+                float: left;
+                width: 50%;
+                display: none;
+
+            }
+        }
+
+        @media(max-width:575px) {
+            .column {
+                float: left;
+                width: 100%;
+                display: none;
+
+                /* Hide all elements by default */
+            }
+        }
+
+        /* Content */
+        .content {
+            background-color: white;
+            padding: 10px;
+        }
+
+        /* The "show" class is added to the filtered elements */
+        .show {
+            display: block;
+            display: flex;
+        }
+
+        /* Style the buttons */
+        .btn {
+            border-radius: 100px;
+            padding: 7px 16px;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #12a460;
+            color: white;
+        }
+
+        .btn.active {
+            background-color: #0dc747b4;
+            color: white;
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 40px;
+            margin: auto;
+            padding: 5px 23px;
+            left: 40px;
+            right: 40px;
+            transition: 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.894);
+            opacity: 0;
+        }
+
+        .column:hover .overlay {
+            display: block;
+            opacity: 1;
+            bottom: 15px;
+        }
+
+        i.fa-solid.fa-eye {
+            position: absolute;
+            right: 10px;
+            top: 25px;
+            color: #12a460;
+        }
+
+        .content img {
+            height: 100%;
+        }
+
+        .small-slider {
+            width: 30%;
+            margin: auto;
+        }
+
+        @media (max-width: 575px) {
+            img.d-block {
+                height: 300px;
+                object-fit: contain;
+            }
+        }
+
+        @media(max-width:768px) {
+            .small-slider {
+                width: 70%;
+                margin: auto;
+            }
+        }
+
+        /* section-2-End */
+        /* Partners Slick Slider-Start */
+        /* Slider */
+
+        .slick-slide {
+            margin: 0px 20px;
+        }
+
+        .slick-slide img {
+            width: 100%;
+        }
+
+        .slick-slider {
+            position: relative;
+            display: block;
+            box-sizing: border-box;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+            -khtml-user-select: none;
+            -ms-touch-action: pan-y;
+            touch-action: pan-y;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .slick-list {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .slick-list:focus {
+            outline: none;
+        }
+
+        .slick-list.dragging {
+            cursor: pointer;
+            cursor: hand;
+        }
+
+        .slick-slider .slick-track,
+        .slick-slider .slick-list {
+            -webkit-transform: translate3d(0, 0, 0);
+            -moz-transform: translate3d(0, 0, 0);
+            -ms-transform: translate3d(0, 0, 0);
+            -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+
+        .slick-track {
+            position: relative;
+            top: 0;
+            left: 0;
+            display: block;
+        }
+
+        .slick-track:before,
+        .slick-track:after {
+            display: table;
+            content: '';
+        }
+
+        .slick-track:after {
+            clear: both;
+        }
+
+        .slick-loading .slick-track {
+            visibility: hidden;
+        }
+
+        .slick-slide {
+            display: none;
+            float: left;
+            height: 100%;
+            min-height: 1px;
+        }
+
+        [dir='rtl'] .slick-slide {
+            float: right;
+        }
+        .slick-slide img {
+            display: block;
+        }
+
+        .slick-slide.slick-loading img {
+            display: none;
+        }
+
+        .slick-slide.dragging img {
+            pointer-events: none;
+        }
+
+        .slick-initialized .slick-slide {
+            display: block;
+        }
+
+        .slick-loading .slick-slide {
+            visibility: hidden;
+        }
+
+        .slick-vertical .slick-slide {
+            display: block;
+            height: auto;
+            border: 1px solid transparent;
+        }
+
+        .slick-arrow.slick-hidden {
+            display: none;
+        }
+
+        /* Partners Slick Slider-End */
+    </style>
+</head>
+
+<body>
+    <header>
+
+        <div class="bg-green p-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-12">
+                        <div class="frame">
+                            <i class="bx bx-envelope text-white"></i> &nbsp;<a href="mailto: info@secupower-sa.com"
+                                class="text-decoration-none text-white p-2">info@secupower-sa.com</a>
+                            <i class="bx bx-phone text-white p-2"></i>
+                            <a href="tel: 01-473 0077" class="text-decoration-none text-white">01-473 0077</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-12">
+                        <div class="social-media p-1">
+                            <i class="bx bxl-twitter text-white fs-5"></i>
+                            <i class="bx bxl-facebook text-white fs-5"></i>
+                            <i class="bx bxl-instagram text-white fs-5"></i>
+                            <i class="bx bxl-linkedin text-white fs-5"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #effbed;">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="#">
+                    <img src="/logo.webp" alt="logo" style="width: 70px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">HOME</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                OUR SERVICES
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">POWER SYSTEMS</a></li>
+                                <li><a class="dropdown-item" href="#">COMMUNICATION</a></li>
+                                <li><a class="dropdown-item" href="#">INSTRUMENTATION</a></li>
+                                <li><a class="dropdown-item" href="#">INDUSTRIAL SECURITY SYSTEMS</a></li>
+                                <li><a class="dropdown-item" href="#">TESTING & COMMISSIONING</a></li>
+                                <li><a class="dropdown-item" href="#">CONTRACTING & ELECTROMECHANICAL</a></li>
+                                <li><a class="dropdown-item" href="#">IT INFRASTRUCTURE</a></li>
+                                <li><a class="dropdown-item" href="#">NETWORK SERVICES</a></li>
+                                <!-- <li>
+                                <hr class="dropdown-divider">
+                            </li> -->
+                                <!-- <li class="nav-item dropend">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Dropdown
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                </ul>
+                            </li> -->
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">PORTFOLIO</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">TRADING</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">LIST OF TOOLS & EQUIPMENTS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">ABOUT US</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">CONTACT US</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- Carousel -->
+    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+        <!-- Indicators/dots -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+        </div>
+
+        <!-- The slideshow/carousel -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/slider_1.webp" alt="Los Angeles" class="d-block" style="width:100%">
+                <div class="carousel-caption">
+                    <h3 class="fs-2 text-primary fw-bold">WELCOME TO GLOBAL CONSULTING</h3>
+                    <p class="fw-bold text-dark">OWERING EFFICIENCY
+                        THROUGH RELIABILITY.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/slider_2.webp" alt="Chicago" class="d-block" style="width:100%">
+                <div class="carousel-caption">
+                    <h3 class="fs-2 text-primary fw-bold">WELCOME TO GLOBAL CONSULTING</h3>
+                    <p class="fw-bold text-white">OWERING EFFICIENCY
+                        THROUGH RELIABILITY.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Left and right controls/icons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+    </div>
+    <section class="bg-about">
+        <div class="container ptb-50">
+            <div class="row">
+                <div class="col-lg-4 col-md-12 d-flex">
+                    <div class="image w-100">
+                        <img src="/about.png" alt="about img" class="w-100 h-100 object-fit-cover">
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-12 d-flex">
+                    <div class="content p-3 p-md-5">
+                        <h3 class="text-green fw-bolder">About Us</h3>
+                        <p>We are renowned contracting company in Saudi Arabia under commercial registration number
+                            1010335813 with the ministry of
+                            Commerce & Industry. The company has its Head office in Riyadh, with its address as
+                            P.O.Box-28062, Riyadh-11437.</p>
+                        <p>The Company’s initial activity was sub-contracting of Electrical Installations In 2015, the
+                            company entered in to a JV
+                            (Joint Venture) with Overseas Constrution Company (Pvt) Ltd to expand its activities to
+                            become a broad-line contracting
+                            comapny.
+                        </p>
+                        <p>Today, SecuPower is a full fledged Contracting Engineering and Services and organization in
+                            Saudi Arabia.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-lg-4 d-md-flex mt-3">
+                    <div class="box p-4">
+                        <h3 class="text-green mb-3">Our Vision</h3>
+                        <p class="text-justify">SECUPOWER aspires to become an acknowledged leader in the fields of
+                            general contracting, construction, management, with
+                            the provision of engineering services in Saudi Arabia and beyond through the diversity and
+                            excellence of our people,
+                            providing value to our customers with a commitment for continuous improvement and
+                            development.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 d-md-flex mt-3">
+                    <div class="box p-4">
+                        <h3 class="text-green mb-3">Our Mission</h3>
+                        <p class="text-justify">We provide timely response to the dynamic needs of our customers in the
+                            field of power distribution and IT
+                            infrastructure by promoting latest technologies and offering environment friendly products
+                            and energy efficient
+                            solutions in partnership with the best in class manufacturers across the world and evolve as
+                            a green company.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 d-md-flex mt-3">
+                    <div class="box p-4 w-100">
+                        <h3 class="text-green mb-3">Our Values</h3>
+                        <p class="text-justify">
+                            <li>Reliability</li>
+                            <li>Integrity</li>
+                            <li>Sustainability</li>
+                            <li>Social Responsibility</li>
+                            <li>Corporate Governance</li>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ptb-50" style="background-color: #effbed;">
+        <div class="container">
+            <h3 class="fw-bold text-center text-green">OUR SERVICES</h3>
+            <div class="row mt-5 justify-content-center">
+                <div class="col-md-6 col-lg-4 mt-3 d-flex">
+                    <div class="s-box text-center">
+                        <div class="icon">
+                            <i class="fa-solid fa-bolt-lightning fs-2 text-green"></i>
+                        </div>
+                        <h5 class="fw-bold">Power Systems</h5>
+                        <br>
+                        <p><span class="text-primary fw-bold">Global Consulting </span>has capacity, capability, and
+                            experience
+                            to perform Power System Studies
+                            and
+                            Analysis works such as Load flow
+                            Study, Short Circuit Study, Relay setting<br> <a href="#"
+                                class="text-green fw-bold text-decoration-none"> Read More</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mt-3 d-flex">
+                    <div class="s-box text-center">
+                        <div class="icon">
+                            <i class="fa-solid fa-tower-cell fs-2 text-green"></i>
+                        </div>
+                        <h5 class="fw-bold">Communication</h5>
+                        <br>
+                        <p>We offer long lasting copper & fiber optic network data
+                            cabling and wiring services, networking & data cabling
+                            solutions. We plan, design, estimate and categorize our clients<br> <a href="#"
+                                class="text-green fw-bold text-decoration-none"> Read More</a></p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mt-3 d-flex">
+                    <div class="s-box text-center">
+                        <div class="icon">
+                            <i class="fa-solid fa-wrench fs-2 text-green"></i>
+                        </div>
+                        <h5 class="fw-bold">Construction</h5>
+                        <br>
+                        <p>We have the capacity, capability, and experience to
+                            perform all the site development works such as Site Enclosures, Site
+                            Fencing, Site Surveying, Site Grading, Infill, Excavation <br> <a href="#"
+                                class="text-green fw-bold text-decoration-none"> Read More</a></p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mt-3 d-flex">
+                    <div class="s-box text-center">
+                        <div class="icon">
+                            <i class="fa-solid fa-pen-ruler fs-2 text-green"></i>
+                        </div>
+                        <h5 class="fw-bold">Instrumentation</h5>
+                        <br>
+                        <p>We have the capacity, capability, and experience to perform all the instrumentation works
+                            such as Calibration, Loop
+                            check, Installation, Testing and commissioning<br> <a href="#"
+                                class="text-green fw-bold text-decoration-none"> Read More</a></p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mt-3 d-flex">
+                    <div class="s-box text-center">
+                        <div class="icon">
+                            <i class="fa-solid fa-shield fs-2 text-green"></i>
+                        </div>
+                        <h5 class="fw-bold">Industrial Security Systems</h5>
+                        <br>
+                        <p>We have the capacity, capability, and experience to perform all Industrial Security system
+                            works complying with HCIS
+                            Regulations which includes <br> <a href="#" class="text-green fw-bold text-decoration-none">
+                                Read More</a></p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mt-3 d-flex">
+                    <div class="s-box text-center">
+                        <div class="icon">
+                            <i class="fa-solid fa-microscope fs-2 text-green"></i>
+                        </div>
+                        <h5 class="fw-bold">Testing & Commissioning</h5>
+                        <br>
+                        <p>We have the capacity, capability, and experience to perform Testing And Commissioning works
+                            such as Substation & Power
+                            equipments, Electrical System & Equipments <br> <a href="#"
+                                class="text-green fw-bold text-decoration-none"> Read More</a></p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 mt-3 d-flex">
+                    <div class="s-box text-center">
+                        <div class="icon">
+                            <i class="fa-solid fa-gear fs-2 text-green"></i>
+                        </div>
+                        <h5 class="fw-bold">Contracting & Electromechanical</h5>
+                        <br>
+                        <p>Our MEP division specializes in the execution of different scopes of electro-mechanical work
+                            and we cater to the growing
+                            project market and end user needs in different <br> <a href="#"
+                                class="text-green fw-bold text-decoration-none"> Read More</a></p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mt-3 d-flex">
+                    <div class="s-box text-center">
+                        <div class="icon">
+                            <i class="fa-solid fa-network-wired fs-2 text-green"></i>
+                        </div>
+                        <h5 class="fw-bold">IT Infrastructure</h5>
+                        <br>
+                        <p>In order to provide secure power to your mission critical IT infrastructure, our products and
+                            solutions ensure that the
+                            systems are running smoothly and efficiently <br> <a href="#"
+                                class="text-green fw-bold text-decoration-none"> Read More</a></p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mt-3 d-flex">
+                    <div class="s-box text-center">
+                        <div class="icon">
+                            <i class="fa-solid fa-microscope fs-2 text-green"></i>
+                        </div>
+                        <h5 class="fw-bold">Network</h5>
+                        <br>
+                        <p>We have the capacity, capability, and experience to perform all the networking works such as
+                            LAN, WAN, WLAN, Data Centre
+                            and Designing & Planning, Engineering <br> <a href="#"
+                                class="text-green fw-bold text-decoration-none"> Read More</a></p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mt-3 d-flex">
+                    <div class="s-box text-center">
+                        <div class="icon">
+                            <i class="fa-solid fa-chart-simple fs-2 text-green"></i>
+                        </div>
+                        <h5 class="fw-bold">Trading</h5>
+                        <br>
+                        <p>
+                            We have the capacity, capability, and experience to perform Testing And Commissioning works
+                            such as Substation & Power
+                            equipments, Electrical System & Equipments <br> <a href="#"
+                                class="text-green fw-bold text-decoration-none"> Read More</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- MAIN (Center website) -->
+    <div class="container mt-5 mb-5">
+        <h4 class="text-center text-primary">PORTFOLIO</h4>
+        <p class="px-5 text-center">Our clients to whom we serve proudly after understanding their business needs. We
+            formulate a
+            proper solution
+            and deliver them the optimal solution for their benefits.</p>
+        <div id=" myBtnContainer">
+            <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+            <button class="btn" onclick="filterSelection('COMPLETED-PROJECTS')">COMPLETED PROJECTS</button>
+            <button class="btn" onclick="filterSelection('ONGOING-PROJECTS')">ONGOING PROJECTS</button>
+        </div>
+
+        <!-- Portfolio Gallery Grid -->
+        <div class="row mt-5">
+            <div class="column COMPLETED-PROJECTS">
+                <div class="content">
+                    <img src="/slider-1.webp" alt="Mountains" style="width:100%">
+                    <div class="overlay">
+                        <span>Span</span>
+                        <i class="fa-solid fa-eye fs-5"></i>
+                        <p>Lorem ipsum dolor..</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column ONGOING-PROJECTS">
+                <div class="content">
+                    <img src="/slider-3.jpg" alt="Lights" style="width:100%">
+                    <div class="overlay">
+                        <span>Span</span>
+                        <i class="fa-solid fa-eye fs-5"></i>
+                        <p>Lorem ipsum dolor..</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column COMPLETED-PROJECTS">
+                <div class="content">
+                    <img src="/slider-1.webp" alt="Nature" style="width:100%">
+                    <div class="overlay">
+                        <span>Span</span>
+                        <i class="fa-solid fa-eye fs-5"></i>
+                        <p>Lorem ipsum dolor..</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column ONGOING-PROJECTS">
+                <div class="content">
+                    <img src="/slider-1.webp" alt="Car" style="width:100%">
+                    <div class="overlay">
+                        <span>Span</span>
+                        <i class="fa-solid fa-eye fs-5"></i>
+                        <p>Lorem ipsum dolor..</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column cars">
+                <div class="content">
+                    <img src="/slider-1.webp" alt="Car" style="width:100%">
+                    <div class="overlay">
+                        <span>Span</span>
+                        <i class="fa-solid fa-eye fs-5"></i>
+                        <p>Lorem ipsum dolor..</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column cars">
+                <div class="content">
+                    <img src="/slider-1.webp" alt="Car" style="width:100%">
+                    <div class="overlay">
+                        <span>Span</span>
+                        <i class="fa-solid fa-eye fs-5"></i>
+                        <p>Lorem ipsum dolor..</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column people">
+                <div class="content">
+                    <img src="/slider-1.webp" alt="Car" style="width:100%">
+                    <div class="overlay">
+                        <span>Span</span>
+                        <i class="fa-solid fa-eye fs-5"></i>
+                        <p>Lorem ipsum dolor..</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column people">
+                <div class="content">
+                    <img src="/slider-1.webp" alt="Car" style="width:100%">
+                    <div class="overlay">
+                        <span>Span</span>
+                        <i class="fa-solid fa-eye fs-5"></i>
+                        <p>Lorem ipsum dolor..</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column people">
+                <div class="content">
+                    <img src="/slider-1.webp" alt="Car" style="width:100%">
+                    <div class="overlay">
+                        <span>Span</span>
+                        <i class="fa-solid fa-eye fs-5"></i>
+                        <p>Lorem ipsum dolor..</p>
+                    </div>
+                </div>
+            </div>
+            <!-- END GRID -->
+        </div>
+
+        <!-- END MAIN -->
+    </div>
+    <section class="ptb-50" style="background-color: #effbed;">
+        <!-- Carousel -->
+        <div id="demo_1" class="carousel slide small-slider" data-bs-ride="carousel">
+            <h4 class="text-center text-green fw-bold">Our Government Certificate
+            </h4>
+            <p class="text-primary text-center fw-medium">Chamber of Commerce
+            </p>
+            <!-- The slideshow/carousel -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/certificate.jpg" alt="Los Angeles" class="d-block" style="width:100%">
+                </div>
+                <div class="carousel-item">
+                    <img src="/certificate.jpg" alt="Chicago" class="d-block" style="width:100%">
+                </div>
+                <div class="carousel-item">
+                    <img src="/certificate.jpg" alt="New York" class="d-block" style="width:100%">
+                </div>
+            </div>
+
+            <!-- Left and right controls/icons -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#demo_1" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#demo_1" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+    <div class="container p-3">
+        <h2 class="text-green text-center fw-bold p-2 mb-5">Our Clients</h2>
+        <section class="customer-logos slider">
+            <div class="slide"><img src="/client-5.webp"></div>
+            <div class="slide"><img src="/client-5.webp"></div>
+            <div class="slide"><img src="/client-5.webp"></div>
+            <div class="slide"><img src="/client-5.webp"></div>
+            <div class="slide"><img src="/client-5.webp"></div>
+            <div class="slide"><img src="/client-5.webp"></div>
+            <div class="slide"><img src="/client-5.webp"></div>
+
+        </section>
+    </div>
+    <!-- Slick Clients Slider JS -->
+    <script>
+        $(document).ready(function () {
+            $('.customer-logos').slick({
+                slidesToShow: 6,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 1500,
+                arrows: false,
+                dots: false,
+                pauseOnHover: false,
+                responsive: [{
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 4
+                    }
+                }, {
+                    breakpoint: 520,
+                    settings: {
+                        slidesToShow: 3
+                    }
+                }]
+            });
+        });
+    </script>
+    <!-- Filter JS  -->
+    <script>
+        filterSelection("all")
+        function filterSelection(c) {
+            var x, i;
+            x = document.getElementsByClassName("column");
+            if (c == "all") c = "";
+            for (i = 0; i < x.length; i++) {
+                w3RemoveClass(x[i], "show");
+                if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+            }
+        }
+
+        function w3AddClass(element, name) {
+            var i, arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (i = 0; i < arr2.length; i++) {
+                if (arr1.indexOf(arr2[i]) == -1) { element.className += " " + arr2[i]; }
+            }
+        }
+
+        function w3RemoveClass(element, name) {
+            var i, arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (i = 0; i < arr2.length; i++) {
+                while (arr1.indexOf(arr2[i]) > -1) {
+                    arr1.splice(arr1.indexOf(arr2[i]), 1);
+                }
+            }
+            element.className = arr1.join(" ");
+        }
+
+
+        // Add active class to the current button (highlight it)
+        var btnContainer = document.getElementById("myBtnContainer");
+        var btns = btnContainer.getElementsByClassName("btn");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function () {
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+            });
+        }
+    </script>
+</body>
+
+</html>
